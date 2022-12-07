@@ -7,7 +7,7 @@ app.use(bodyParser.json());
 
 app.get('/customers', async function (req, res) {
     var pool = await conn;
-    var sqlString = "select top 10000 * from cust_customers order by created_on_date desc";
+    var sqlString = "select top 10000 * from viCust_customers order by created_on_date desc";
     return await pool.request().query(sqlString, function (err, data) {
         //console.log(err, data);
         res.send({ result: data.recordset })
@@ -17,7 +17,7 @@ app.get('/customers', async function (req, res) {
 app.get('/customers/gettel/:sdt', async function (req, res) {
     var sdt = req.params.sdt;
     var pool = await conn;
-    var sqlString = "Select * from cust_customers where tel like '%" + sdt + "%'"
+    var sqlString = "Select * from viCust_customers where tel like '%" + sdt + "%'"
 
     return await pool.request().query(sqlString, function (err, data) {
         if (data.recordset.length > 0) {
@@ -31,7 +31,7 @@ app.get('/customers/gettel/:sdt', async function (req, res) {
 app.get('/customers/gettel2/:sdt', async function (req, res) {
     var sdt = req.params.sdt;
     var pool = await conn;
-    var sqlString = "Select * from cust_customers where tel2 like '%" + sdt + "%'"
+    var sqlString = "Select * from viCust_customers where tel2 like '%" + sdt + "%'"
 
     return await pool.request().query(sqlString, function (err, data) {
         if (data.recordset.length > 0) {
@@ -45,7 +45,7 @@ app.get('/customers/gettel2/:sdt', async function (req, res) {
 app.get('/customers/getname/:sdt', async function (req, res) {
     var sdt = req.params.sdt;
     var pool = await conn;
-    var sqlString = "Select * from cust_customers where customer_name like N'%" + sdt + "%'"
+    var sqlString = "Select * from viCust_customers where customer_name like N'%" + sdt + "%'"
 
     return await pool.request().query(sqlString, function (err, data) {
         if (data.recordset.length > 0) {
@@ -59,7 +59,7 @@ app.get('/customers/getname/:sdt', async function (req, res) {
 app.get('/customers/getcode/:sdt', async function (req, res) {
     var sdt = req.params.sdt;
     var pool = await conn;
-    var sqlString = "Select * from cust_customers where customer_code like '%" + sdt + "%'"
+    var sqlString = "Select * from viCust_customers where customer_code like '%" + sdt + "%'"
 
     return await pool.request().query(sqlString, function (err, data) {
         if (data.recordset.length > 0) {
@@ -73,7 +73,7 @@ app.get('/customers/getcode/:sdt', async function (req, res) {
 app.get('/customers/getaddress/:sdt', async function (req, res) {
     var sdt = req.params.sdt;
     var pool = await conn;
-    var sqlString = "Select * from cust_customers where address1 like N'%" + sdt + "%'"
+    var sqlString = "Select * from viCust_customers where address1 like N'%" + sdt + "%'"
 
     return await pool.request().query(sqlString, function (err, data) {
         if (data.recordset.length > 0) {
